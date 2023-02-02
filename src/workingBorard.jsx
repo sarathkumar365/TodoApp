@@ -3,16 +3,53 @@ import { nanoid } from 'nanoid'
 
 import { useState,useEffect,useRef } from 'react';
 
-function WorkingBorard() { 
+function WorkingBorard() {
 
-  const currentTodo = useRef('')
-  
-  const addTask = () => {
-    console.log(currentTodo.current.value);
-  }
+    const [todos,setTodos] = useState({})
+    const [storedData,setstoredData] = useState({})
 
-  
-  return (
+    const currentTodo = useRef('')
+
+    const addTask = () => {
+    // check if todo field is empty, if so : return
+    if(currentTodo.current.value === '' ) return
+
+    // create todo's object and add currentTodo
+    setTodos((oldVal) => {
+        
+        // chek if the todos is empty || is this the first value
+        if(Object.keys(todos).length === 0) {
+            const todoId = nanoid()
+
+            return ({
+                [todoId]:currentTodo.current.value
+            })
+        } 
+        
+        // if it's not the first value
+        const todoId = nanoid()
+
+        return ({
+            ...oldVal,
+            [todoId]:currentTodo.current.value
+        })
+        
+    })
+        
+}
+
+useEffect(()=> {
+  // get locally stored data, if any
+  // const data = JSON.parse(localStorage.getItem('todos'))
+  // setstoredData(data)
+  console.log('effect');
+
+
+    // localStorage.setItem('todos',JSON.stringify(todos))
+},[todos])
+
+console.log('l');
+return (
     <div className='workingBorard'>
           <div className="board">
               <div className="left-board">
