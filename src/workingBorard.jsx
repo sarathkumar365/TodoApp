@@ -4,51 +4,77 @@ import { nanoid } from 'nanoid'
 import { useState,useEffect,useRef } from 'react';
 
 function WorkingBorard() {
+  
+  const [todos,setTodos] = useState({})
+  const currentTodo = useRef('')
+  const storedData = useRef({})
 
-    const [todos,setTodos] = useState({})
-    const [storedData,setstoredData] = useState({})
-
-    const currentTodo = useRef('')
 
     const addTask = () => {
-    // check if todo field is empty, if so : return
-    if(currentTodo.current.value === '' ) return
+      // check if todo field is empty, if so : return
+      if(currentTodo.current.value === '' ) return
+      
+      // create todo's object and add currentTodo
+      setTodos((oldVal) => {
 
-    // create todo's object and add currentTodo
-    setTodos((oldVal) => {
+        // if stored data exists, 
+        // if(Object.keys(todos).length > 0){
+        //   const todoId = nanoid()
+          
+        //  setTodos((oldVal) => {
+
+        //   return ({
+
+        //   })
+        //  })
+        // }
         
         // chek if the todos is empty || is this the first value
         if(Object.keys(todos).length === 0) {
-            const todoId = nanoid()
+          const todoId = nanoid()
 
-            return ({
-                [todoId]:currentTodo.current.value
-            })
+          //test
+          return ({
+            ...storedData.current,
+            [todoId]: currentTodo.current.value
+          })
+          
+          return ({
+            [todoId]:currentTodo.current.value
+          })
         } 
         
         // if it's not the first value
         const todoId = nanoid()
 
         return ({
-            ...oldVal,
-            [todoId]:currentTodo.current.value
+          ...oldVal,
+          [todoId]:currentTodo.current.value
         })
         
-    })
-        
+      })
+      
+      console.log('ADD');
 }
 
-useEffect(()=> {
-  // get locally stored data, if any
-  // const data = JSON.parse(localStorage.getItem('todos'))
-  // setstoredData(data)
-  console.log('effect');
+useEffect(() => {
+  const existingData = JSON.parse(localStorage.getItem('todos'))
+ if(existingData){
+  if(Object.keys(existingData).length > 0) {
+    console.log('data exists',existingData);
+    storedData.current = existingData
+  }
+ }
 
+  // check if todos is empty when refreshing the page.(if yes : don't setItem, 
+  // bcz it will overwrite and remove all the data from localStorage)
+  if(Object.keys(todos).length > 0) {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
 
-    // localStorage.setItem('todos',JSON.stringify(todos))
 },[todos])
 
-console.log('l');
+
 return (
     <div className='workingBorard'>
           <div className="board">
