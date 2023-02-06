@@ -50,7 +50,12 @@ const existingData = JSON.parse(localStorage.getItem('todos'))
 console.log(existingData);
 if(existingData){
   if(Object.keys(existingData).length > 0) {
-    storedData.current = existingData
+    // setTodos(oldVal => {
+    //   return({
+    //     ...oldVal,
+    //     existingData
+    //   })
+    // })
   }
 }
 
