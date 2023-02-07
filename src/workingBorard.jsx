@@ -8,11 +8,11 @@ function WorkingBorard() {
 
   
   const [todos,setTodos] = useState({})
+
   const currentTodo = useRef('')
   const storedData = useRef({})
   
   const addTask = () => {
-    console.log('add');
       // check if todo field is empty, if so : return
       if(currentTodo.current.value === '' ) return
       
@@ -44,18 +44,25 @@ function WorkingBorard() {
       })
 }
 
-//check if storedData exists, if yes: load them, display them
-  
-const existingData = JSON.parse(localStorage.getItem('todos'))
-console.log(existingData);
-if(existingData){
-  if(Object.keys(existingData).length > 0) {
-    storedData.current = existingData
+  // this logic is for updating the curent state with the existing data stored and 
+  // is used to det state combining existing and new data
+  const existingData = JSON.parse(localStorage.getItem('todos'))
+  if(existingData){
+    if(Object.keys(existingData).length > 0) {
+      storedData.current = existingData
+    }
   }
-}
+
+  // if data exists in todos(state) then give it to rightBoard TO DISPLAY them
+  // if not : give data in existingData
+  let dataToDisplay = []
+  if(Object.keys(todos).length > 0) {
+    dataToDisplay = Object.values(todos).map(el => el)
+  } else if(existingData){
+    dataToDisplay = Object.values(existingData).map(el => el) 
+  }
 
 useEffect(() => {
-  console.log('effect');
   // check if todos is empty when refreshing the page.(if yes : don't setItem, 
   // bcz it will overwrite and remove all the data from localStorage)
   if(Object.keys(todos).length > 0) {
@@ -67,7 +74,6 @@ useEffect(() => {
 
 },[todos])
 
-console.log('render');
 
 return (
     <div className='workingBorard'>
@@ -86,7 +92,7 @@ return (
                   <textarea ref={currentTodo} name="taskInput" id="taskInput" cols="30" rows="10" placeholder='start here ...'></textarea>
                 </div>
               </div>
-              <RightBoard storedData = {storedData}/>
+              <RightBoard dataToDisplay = {dataToDisplay}/>
           </div>
     </div>
   )
