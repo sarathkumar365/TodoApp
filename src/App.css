@@ -135,7 +135,7 @@ select {
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius:1.5rem;
 
-    padding: 2rem 3rem;
+  padding: 1.5rem 1rem;
 
 }
 
@@ -230,3 +230,28 @@ textarea:focus {
 
 }
 
+.right-board{
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.databox{
+  width:12rem;
+  height:8rem;
+
+  background-color: #f09a7dc6;
+  padding: 1rem 1rem;
+  font-family: 'Poppins';
+
+  border-radius:.7rem;
+  /* border: none; */
+
+  transition: all 5sec ease-in-out;
+}
+
+.databox:hover{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 105px 5px;
+  cursor: pointer;
+}
