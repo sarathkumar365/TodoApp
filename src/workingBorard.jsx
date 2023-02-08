@@ -8,6 +8,7 @@ function WorkingBorard() {
 
   
   const [todos,setTodos] = useState({})
+  const [activeTodo, setactiveTodo]  = useState('')
 
   const currentTodo = useRef('')
   const storedData = useRef({})
@@ -44,6 +45,10 @@ function WorkingBorard() {
       })
 }
 
+const delTask = () =>{
+  console.log('delete task');
+}
+
   // this logic is for updating the curent state with the existing data stored and 
   // is used to det state combining existing and new data
   const existingData = JSON.parse(localStorage.getItem('todos'))
@@ -57,9 +62,27 @@ function WorkingBorard() {
   // if not : give data in existingData
   let dataToDisplay = []
   if(Object.keys(todos).length > 0) {
-    dataToDisplay = Object.values(todos).map(el => el)
+    // dataToDisplay = Object.values(todos)
+    dataToDisplay = todos
+
   } else if(existingData){
-    dataToDisplay = Object.values(existingData).map(el => el) 
+    // dataToDisplay = Object.values(existingData) 
+    dataToDisplay = existingData 
+
+  }
+
+  // set current active todo
+  const setCurrentTodo = (clickedTodo) => {
+    
+    // update setactiveTodo to current todo
+    setactiveTodo(clickedTodo)
+
+    // load currently clicked todo and display it in textarea  
+    if(Object.keys(todos).length > 0) {
+      currentTodo.current.value = todos[clickedTodo]
+    } else {
+      currentTodo.current.value = storedData.current[clickedTodo]
+    }
   }
 
 useEffect(() => {
@@ -74,7 +97,6 @@ useEffect(() => {
 
 },[todos])
 
-
 return (
     <div className='workingBorard'>
           <div className="board">
@@ -83,6 +105,7 @@ return (
                   <div className="header-name">TODO</div>
                     <div className="bttns">
                       <a onClick={()=> addTask()} className='add' href="#" >Add</a>
+                      <a onClick={()=> delTask()} className='del' href="#" >Del</a>
                     </div>           
                 </div>
                 <div className="sentance">
@@ -92,7 +115,7 @@ return (
                   <textarea ref={currentTodo} name="taskInput" id="taskInput" cols="30" rows="10" placeholder='start here ...'></textarea>
                 </div>
               </div>
-              <RightBoard dataToDisplay = {dataToDisplay}/>
+              <RightBoard setCurrentTodo={setCurrentTodo} dataToDisplay = {dataToDisplay}/>
           </div>
     </div>
   )
