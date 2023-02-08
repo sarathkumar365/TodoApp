@@ -73,16 +73,8 @@ const delTask = () =>{
 
   // set current active todo
   const setCurrentTodo = (clickedTodo) => {
-    
     // update setactiveTodo to current todo
     setactiveTodo(clickedTodo)
-
-    // load currently clicked todo and display it in textarea  
-    if(Object.keys(todos).length > 0) {
-      currentTodo.current.value = todos[clickedTodo]
-    } else {
-      currentTodo.current.value = storedData.current[clickedTodo]
-    }
   }
 
 useEffect(() => {
@@ -96,6 +88,18 @@ useEffect(() => {
   }
 
 },[todos])
+
+// update the display to current activeTodo
+useEffect(()=>{
+    if(Object.keys(todos).length > 0) {
+      currentTodo.current.value = todos[activeTodo]
+    } else {
+      console.log(storedData.current[activeTodo]);
+      currentTodo.current.value = storedData.current[activeTodo] || ''
+    }
+},[activeTodo])
+
+console.log(activeTodo);
 
 return (
     <div className='workingBorard'>
