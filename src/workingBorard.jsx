@@ -9,7 +9,8 @@ function WorkingBorard() {
   
   const [todos,setTodos] = useState({})
   const [activeTodo, setactiveTodo]  = useState('')
-
+  const [deleted,setdeleted] = useState(false)
+  
   const currentTodo = useRef('')
   const storedData = useRef({})
   
@@ -47,10 +48,31 @@ function WorkingBorard() {
 
 const delTask = () =>{
   console.log('delete task');
+  // 1.check if the activeTodo is empty
+  if(!activeTodo) {
+    console.log('nothing to delete') 
+    return
+  };
+
+  // 2.delete the current todo in activeTodo from a) todos state b)storedData
+  // a)
+  if(Object.keys(todos).length > 0) {
+    const oldStoredData = todos
+    delete oldStoredData[activeTodo]
+    setTodos(oldStoredData)
+    localStorage.setItem('todos',JSON.stringify(todos))  
+    setdeleted(true)      
+  } else {
+    const oldStoredData = storedData.current
+    delete oldStoredData[activeTodo]  
+    storedData.current = oldStoredData
+    localStorage.setItem('todos',JSON.stringify(storedData.current))
+    setdeleted(true)      
+  }
 }
 
-  // this logic is for updating the curent state with the existing data stored and 
-  // is used to det state combining existing and new data
+  // this logic is for updating the curent state with the existing data stored in localStorage and 
+  // is used to set state combining existing and new data
   const existingData = JSON.parse(localStorage.getItem('todos'))
   if(existingData){
     if(Object.keys(existingData).length > 0) {
@@ -59,7 +81,7 @@ const delTask = () =>{
   }
 
   // if data exists in todos(state) then give it to rightBoard TO DISPLAY them
-  // if not : give data in existingData
+  // if not : give data from existingData
   let dataToDisplay = []
   if(Object.keys(todos).length > 0) {
     // dataToDisplay = Object.values(todos)
@@ -67,7 +89,7 @@ const delTask = () =>{
 
   } else if(existingData){
     // dataToDisplay = Object.values(existingData) 
-    dataToDisplay = existingData 
+    dataToDisplay = storedData.current 
 
   }
 
@@ -82,24 +104,28 @@ useEffect(() => {
   // bcz it will overwrite and remove all the data from localStorage)
   if(Object.keys(todos).length > 0) {
     localStorage.setItem('todos', JSON.stringify(todos))
-
     //clear the input field
     currentTodo.current.value = ''
   }
-
+  
 },[todos])
 
-// update the display to current activeTodo
+useEffect(()=>{
+  
+    return ()=> setdeleted(false)
+
+},[deleted])
+
+// update the textarea display to current activeTodo
 useEffect(()=>{
     if(Object.keys(todos).length > 0) {
       currentTodo.current.value = todos[activeTodo]
     } else {
-      console.log(storedData.current[activeTodo]);
       currentTodo.current.value = storedData.current[activeTodo] || ''
     }
 },[activeTodo])
 
-console.log(activeTodo);
+// console.log(todos,deleteInitiated);
 
 return (
     <div className='workingBorard'>
