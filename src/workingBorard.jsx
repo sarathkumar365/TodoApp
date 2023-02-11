@@ -61,7 +61,8 @@ const delTask = () =>{
     delete oldStoredData[activeTodo]
     setTodos(oldStoredData)
     localStorage.setItem('todos',JSON.stringify(todos))  
-    setdeleted(true)      
+    setdeleted(true)  
+    console.log('done');    
   } else {
     const oldStoredData = storedData.current
     delete oldStoredData[activeTodo]  
@@ -111,8 +112,11 @@ useEffect(() => {
 },[todos])
 
 useEffect(()=>{
-  
-    return ()=> setdeleted(false)
+    console.log('effect');
+    return ()=> {
+      console.log('effect undone');
+      setdeleted(false)
+    }
 
 },[deleted])
 
