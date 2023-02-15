@@ -1,8 +1,7 @@
 @font-face {
   font-family: shrimp;
-  src: url('../resourses/fonts/shrimp/SHRIMP.ttf');
+  src: url("../resourses/fonts/shrimp/SHRIMP.ttf");
 }
-
 
 /* Box sizing rules */
 *,
@@ -26,8 +25,8 @@ dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -66,9 +65,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -85,13 +84,20 @@ select {
   height: 100vh;
   width: 100%;
 
-  background-image: linear-gradient(to right top, #536d64, #5f7e73, #6b9082, #77a291, #84b4a1);
+  background-image: linear-gradient(
+    to right top,
+    #536d64,
+    #5f7e73,
+    #6b9082,
+    #77a291,
+    #84b4a1
+  );
 
   display: grid;
   place-content: center;
 }
 
-.workingBorard{
+.workingBorard {
   height: 50rem;
   width: 60rem;
 
@@ -101,45 +107,43 @@ select {
 
   background-color: white;
 
-  box-shadow: 24px 20px 33px 1px rgba(0,0,0,0.32), -3px 4px 3px 1px rgba(0,0,0,0.32);
+  box-shadow: 24px 20px 33px 1px rgba(0, 0, 0, 0.32),
+    -3px 4px 3px 1px rgba(0, 0, 0, 0.32);
 }
 
-.board{
+.board {
   height: 100%;
   width: 100%;
   display: flex;
-
 }
 
-.left-board{
+.left-board {
   width: 230%;
   height: 100%;
 
-  background-color: #E6E8ED;
+  background-color: #e6e8ed;
 
   border-top-left-radius: 1.5rem;
-  border-bottom-left-radius:1.5rem;
+  border-bottom-left-radius: 1.5rem;
 
-    padding: 2rem 3rem;
+  padding: 2rem 3rem;
 
-    overflow: hidden;
-
+  overflow: hidden;
 }
 
-.right-board{
+.right-board {
   width: 100%;
   height: 100%;
 
-  background-color: #F0B4A2;
+  background-color: #f0b4a2;
 
   border-top-right-radius: 1.5rem;
-  border-bottom-right-radius:1.5rem;
+  border-bottom-right-radius: 1.5rem;
 
   padding: 1.5rem 1rem;
-
 }
 
-.header-section--left{
+.header-section--left {
   height: 5rem;
 
   display: flex;
@@ -163,50 +167,49 @@ a {
   text-decoration: inherit; /* no underline */
 }
 
-.bttns > .add,.del {
-  padding: .4rem 3rem;
-  background-color: #7BE1B6;
+.bttns > .add,
+.del {
+  padding: 0.4rem 3rem;
+  background-color: #7be1b6;
 
   font-size: 16px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: white;
 
   font-weight: 200;
-  
+
   border-radius: 1.5rem;
 
-  
   transition: all 0.2s ease-in;
-  
-} 
+}
 
-.add:hover,.del:hover{
+.add:hover,
+.del:hover {
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 4px; */
-  box-shadow: 0 4px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.15);
 }
 
 .bttns > .del {
   color: white;
-  background-color: #FF6464;
+  background-color: #ff6464;
 }
 
-.sentance{
+.sentance {
   padding: 1rem 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
-
 }
 
-.inputArea{
+.inputArea {
   height: 30rem;
   transition: all 0.2s ease-in;
 }
 
-.inputArea:hover{
+.inputArea:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 4px;
 }
 
-textarea{
+textarea {
   height: 100%;
   width: 100%;
 
@@ -214,23 +217,22 @@ textarea{
 
   padding: 1rem 1.5rem;
 
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: none;
 
-  background-color: #E6E8ED;
+  background-color: #e6e8ed;
 
   font-size: 1rem;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 
   outline: none;
 }
 
 textarea:focus {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 215px 5px;
-
 }
 
-.right-board{
+.right-board {
   display: flex;
   flex-direction: column;
 
@@ -240,21 +242,59 @@ textarea:focus {
   overflow: hidden;
 }
 
-.databox{
-  width:12rem;
-  height:8rem;
+.databox {
+  width: 12rem;
+  height: 8rem;
+
+  /* my way of clipping text in textbox */
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; */
 
   background-color: #f09a7dc6;
   padding: 1rem 1rem;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 
-  border-radius:.7rem;
+  border-radius: 0.7rem;
   /* border: none; */
 
   transition: all 5sec ease-in-out;
 }
 
-.databox:hover{
+/* .databox > p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+} */
+
+.databox:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 105px 5px;
   cursor: pointer;
 }
+/* code to show only 4 lines in .databox  from web dev simplified. 
+He also has other ways */
+
+.text-cutoff {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* animation from website */
+

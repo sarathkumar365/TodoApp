@@ -1,13 +1,12 @@
-import React from 'react'
-import Workingboard from './workingBorard'
-
+import React from 'react';
+import Workingboard from './workingBoard';
 
 function todoApp() {
   return (
-    <div className='todoApp'>
-        < Workingboard/>      
+    <div className="todoApp">
+      <Workingboard />
     </div>
-  )
+  );
 }
 
-export default todoApp
+export default todoApp;
