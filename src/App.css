@@ -140,7 +140,7 @@ select {
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
 
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .header-section--left {
@@ -234,7 +234,17 @@ textarea:focus {
 .right-board {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.databoxes {
+  width: 100%;
+  height: 45rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 1.5rem;
 
@@ -243,7 +253,8 @@ textarea:focus {
 
 .databox {
   width: 12rem;
-  height: 8rem;
+  height: 7rem;
+  /* height: auto; */
 
   /* my way of clipping text in textbox */
   /* text-overflow: ellipsis;
@@ -255,20 +266,52 @@ textarea:focus {
   font-family: "Poppins";
 
   border-radius: 0.7rem;
-  /* border: none; */
 
-  transition: all 5sec ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-
-/* .databox > p {
-  text-overflow: ellipsis;
-  overflow: hidden;
-} */
 
 .databox:hover {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 105px 5px;
+  transform: scale(1.1);
   cursor: pointer;
 }
+
+.pagination {
+  width: 100%;
+  height: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.prev,
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #e6e8ed;
+  border-radius: 5rem;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.next > img,
+.prev > img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: cover;
+}
+
+.prev:hover,
+.next:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
 /* code to show only 4 lines in .databox  from web dev simplified. 
 He also has other ways */
 
@@ -276,7 +319,7 @@ He also has other ways */
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
 }
 
 .fade-in {
