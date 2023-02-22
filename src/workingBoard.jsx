@@ -131,10 +131,10 @@ function WorkingBorard() {
           <div className="header-section--left">
             <div className="header-name">TODO</div>
             <div className="bttns">
-              <a onClick={() => addTask()} className="add button" href="#">
+              <a onClick={() => addTask()} className="add button" >
                 Add
               </a>
-              <a onClick={() => delTask()} className="del button" href="#">
+              <a onClick={() => delTask()} className="del button" >
                 Del
               </a>
             </div>
