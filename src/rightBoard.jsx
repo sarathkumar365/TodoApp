@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import rightArrow from '../resourses/icons/right-arroww.png';
 import leftArrow from '../resourses/icons/left-arroww.png';
 
 function RightBoard(props) {
-  // eslint-disable-next-line react/destructuring-assignment, react/prop-types
+  const [currentPage,setcurrentPage] = useState(1)
+  const [perPage,setperPage] = useState(5)
+
   const dataToDisplayArr = Object.keys(props.dataToDisplay).map((key, i) => (
-    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <Fragment key={i}>
       <div
         onClick={() => props.setCurrentTodo(key)}
@@ -16,15 +17,38 @@ function RightBoard(props) {
     </Fragment>
   ));
 
-  // return <div className="right-board">{dataToDisplayArr}</div>;
+  const lastPostIndex = currentPage * perPage;
+  const firstPostIndex = lastPostIndex - perPage;
+
+  const dataAfterPagination = dataToDisplayArr.slice(firstPostIndex, lastPostIndex);
+
+  const next = () => {
+
+    // calculate the number of total pages to display for all todos
+    // eg. if total = 7, then pages required = 2 (coz each page displays 5 todos)
+    // so when current page is 2, all the todos will be displayed
+
+    if(currentPage === Math.ceil(dataToDisplayArr.length / perPage)) return;
+    
+    setcurrentPage(oldVal => oldVal + 1);
+  };
+
+  const prev = () => {
+    // prevent current page from going to 0
+    if(currentPage === 1) return;
+
+    setcurrentPage(oldVal => oldVal - 1);
+  };
+
   return (
     <div className="right-board">
-      <div className="databoxes">{dataToDisplayArr}</div>
+      {/* <div className="databoxes">{dataToDisplayArr}</div> */}
+      <div className="databoxes">{dataAfterPagination}</div>
       <div className="pagination">
-        <div className="prev">
+        <div onClick={() => prev()} className="prev">
           <img src={leftArrow} alt="right arrow" />
         </div>
-        <div className="next">
+        <div onClick={() => next()} className="next">
           <img src={rightArrow} alt="right arrow" />
         </div>
       </div>

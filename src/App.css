@@ -244,9 +244,10 @@ textarea:focus {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 1.5rem;
+  padding-top: 2rem;
 
   overflow: hidden;
 }
@@ -267,7 +268,7 @@ textarea:focus {
 
   border-radius: 0.7rem;
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.225s ease-in-out;
 }
 
 .databox:hover {
@@ -296,7 +297,7 @@ textarea:focus {
   background-color: #e6e8ed;
   border-radius: 5rem;
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.225s ease-in-out;
 }
 
 .next > img,
