@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import rightArrow from '../resourses/icons/right-arroww.png';
-import leftArrow from '../resourses/icons/left-arroww.png';
+import Pagination  from './pagination';
+
 
 function RightBoard(props) {
   const [currentPage,setcurrentPage] = useState(1)
@@ -39,21 +39,30 @@ function RightBoard(props) {
 
     setcurrentPage(oldVal => oldVal - 1);
   };
-
+console.log(currentPage);
   return (
     <div className="right-board">
       {/* <div className="databoxes">{dataToDisplayArr}</div> */}
       <div className="databoxes">{dataAfterPagination}</div>
-      <div className="pagination">
-        <div onClick={() => prev()} className="prev">
-          <img src={leftArrow} alt="right arrow" />
-        </div>
-        <div onClick={() => next()} className="next">
-          <img src={rightArrow} alt="right arrow" />
-        </div>
-      </div>
+      {/* {dataToDisplayArr.length > perPage ? <Pagination prev = {prev} next = {next} /> : ''} */}
+      {dataToDisplayArr.length > perPage ? <Pagination prev = {prev} next = {next} /> : currentPage === 2 ? <Pagination prev = {prev} next = {next} /> : '' }
     </div>
   );
+
+  // return (
+  //   <div className="right-board">
+  //     {/* <div className="databoxes">{dataToDisplayArr}</div> */}
+  //     <div className="databoxes">{dataAfterPagination}</div>
+  //     <div className="pagination">
+  //       <div onClick={() => prev()} className="prev">
+  //         <img src={leftArrow} alt="right arrow" />
+  //       </div>
+  //       <div onClick={() => next()} className="next">
+  //         <img src={rightArrow} alt="right arrow" />
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default RightBoard;
