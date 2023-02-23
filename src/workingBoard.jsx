@@ -67,6 +67,7 @@ function WorkingBorard() {
       localStorage.setItem('todos', JSON.stringify(storedData.current));
       setdeleted(true);
       currentTodo.current.value = '';
+
     }
   };
 

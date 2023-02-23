@@ -98,10 +98,10 @@ select {
 }
 
 .workingBorard {
-  height: 50rem;
-  width: 60rem;
+  height: 40rem;
+  width: 48rem;
 
-  border-radius: 1.5rem;
+  border-radius: 1rem;
 
   /* padding: 2rem 3rem; */
 
@@ -123,8 +123,8 @@ select {
 
   background-color: #e6e8ed;
 
-  border-top-left-radius: 1.5rem;
-  border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 
   padding: 2rem 3rem;
 
@@ -137,14 +137,14 @@ select {
 
   background-color: #f0b4a2;
 
-  border-top-right-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.8rem;
 }
 
 .header-section--left {
-  height: 5rem;
+  height: 3.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -152,7 +152,7 @@ select {
 }
 
 .header-name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: shrimp;
   font-weight: 200;
 }
@@ -169,14 +169,14 @@ a {
 
 .bttns > .add,
 .del {
-  padding: 0.4rem 3rem;
+  padding: 0.4rem 2rem;
   background-color: #7be1b6;
 
-  font-size: 16px;
+  font-size: 12px;
   font-family: "Poppins", sans-serif;
   color: white;
 
-  font-weight: 200;
+  font-weight: 400;
 
   border-radius: 1.5rem;
 
@@ -197,10 +197,11 @@ a {
   padding: 1rem 0;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  font-size: 0.8rem;
 }
 
 .inputArea {
-  height: 30rem;
+  height: 24rem;
   transition: all 0.2s ease-in;
 }
 
@@ -221,7 +222,7 @@ textarea {
 
   background-color: #e6e8ed;
 
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-family: "Poppins";
 
   outline: none;
@@ -240,21 +241,21 @@ textarea:focus {
 
 .databoxes {
   width: 100%;
-  height: 45rem;
+  height: 35rem;
 
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  /* justify-content: flex-end; */
   align-items: center;
-  gap: 1.5rem;
-  padding-top: 2rem;
+  gap: 1rem;
+  padding-top: 0.6rem;
 
   overflow: hidden;
 }
 
 .databox {
-  width: 12rem;
-  height: 7rem;
+  width: 10rem;
+  height: 5.9rem;
   /* height: auto; */
 
   /* my way of clipping text in textbox */
@@ -263,16 +264,21 @@ textarea:focus {
   white-space: nowrap; */
 
   background-color: #f09a7dc6;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
   font-family: "Poppins";
+  /* font-size: 0.6rem; */
 
   border-radius: 0.7rem;
 
   transition: all 0.225s ease-in-out;
 }
 
+.databox > p {
+  font-size: 0.8rem;
+}
+
 .databox:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -292,8 +298,8 @@ textarea:focus {
   align-items: center;
   justify-content: center;
 
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   background-color: #e6e8ed;
   border-radius: 5rem;
 
@@ -302,8 +308,8 @@ textarea:focus {
 
 .next > img,
 .prev > img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   object-fit: cover;
 }
 
@@ -320,7 +326,7 @@ He also has other ways */
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
 }
 
 .fade-in {
@@ -374,7 +380,7 @@ He also has other ways */
   margin-left: -50px !important;
   margin-top: -120%;
   opacity: 0;
-  transition: all 1.222s;
+  transition: all 0.8s;
 
   border-radius: 50%;
 }

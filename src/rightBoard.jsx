@@ -9,6 +9,7 @@ function RightBoard(props) {
   const dataToDisplayArr = Object.keys(props.dataToDisplay).map((key, i) => (
     <Fragment key={i}>
       <div
+        id='databox'
         onClick={() => props.setCurrentTodo(key)}
         className="databox fade-in"
       >
@@ -39,7 +40,8 @@ function RightBoard(props) {
 
     setcurrentPage(oldVal => oldVal - 1);
   };
-    console.log(currentPage);
+
+
   return (
     <div className="right-board">
       {/* <div className="databoxes">{dataToDisplayArr}</div> */}
