@@ -39,13 +39,14 @@ function RightBoard(props) {
 
     setcurrentPage(oldVal => oldVal - 1);
   };
-console.log(currentPage);
+    console.log(currentPage);
   return (
     <div className="right-board">
       {/* <div className="databoxes">{dataToDisplayArr}</div> */}
       <div className="databoxes">{dataAfterPagination}</div>
       {/* {dataToDisplayArr.length > perPage ? <Pagination prev = {prev} next = {next} /> : ''} */}
-      {dataToDisplayArr.length > perPage ? <Pagination prev = {prev} next = {next} /> : currentPage === 2 ? <Pagination prev = {prev} next = {next} /> : '' }
+      {dataToDisplayArr.length > perPage ? <Pagination prev = {prev} next = {next} /> :  
+      currentPage === 2 ? <Pagination prev = {prev} next = {next} /> : '' }
     </div>
   );
 
