@@ -162,6 +162,7 @@ select {
   gap: 2em;
   justify-content: space-between;
 }
+
 a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
@@ -398,4 +399,21 @@ He also has other ways */
 
 .button:focus {
   outline: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 430px) {
+  .todoApp {
+    display: none;
+  }
+
+  body::after {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: "Switch to desktop mode";
+
+    font-family: "Poppins";
+  }
 }
